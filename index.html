@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<title>Luyện tập cùng quizizz</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+<style>
+/* ===== NỀN TRI THỨC ===== */
+body{
+    margin:0;
+    font-family:"Segoe UI",sans-serif;
+    background:
+      linear-gradient(rgba(255,255,255,0.65), rgba(255,255,255,0.65)),
+      url("https://raw.githubusercontent.com/kayypro4-dev/n-n/main/z7407891250357_e7dc59aedaaae6ad16bcdfbdb0df0b9d.jpg");
+background-size: cover;
+background-repeat: no-repeat;
+background-position: center;
+    background-attachment:fixed;
+    color:#1e293b;
+}
+
+/* ===== HEADER ===== */
+header{
+    text-align:center;
+    padding:40px 20px 20px;
+}
+header h1{
+    font-size:42px;
+    font-weight:800;
+    background:linear-gradient(90deg,#2563eb,#9333ea);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+header p{
+    max-width:820px;
+    margin:auto;
+    font-size:17px;
+}
+
+/* ===== GRID ===== */
+.grid{
+    max-width:1150px;
+    margin:30px auto 60px;
+    padding:20px;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:44px;
+}
+
+/* ===== ROBOT ===== */
+.robot{
+    position:relative;
+    text-align:center;
+}
+
+/* robot to hơn */
+.robot img{
+    width:400px;              /* TO HƠN */
+    max-width:108%;
+}
+
+/* ===== BỤNG ROBOT ===== */
+.belly{
+    position:absolute;
+    top:280px;
+    left:54%;
+    transform:translateX(-50%);
+    width:155px;              /* viền */
+    height:108px;
+    background:rgba(255,255,255,0.97);
+    border-radius:8px;
+    padding:1px;              /* padding NHỎ */
+    box-shadow:0 10px 22px rgba(0,0,0,0.22);
+}
+
+/* ===== QR (GIỮ SIZE – VIỀN TRẮNG NHỎ) ===== */
+.qr{
+    width:80px;               /* QR vừa */
+    height:80px;
+    margin:7px auto 7px;      /* viền trắng NHỎ */
+}
+
+/* link trong bụng */
+.belly a{
+    display:block;
+    font-size:12px;
+    font-weight:600;
+    color:#2563eb;
+    text-decoration:none;
+    word-break:break-word;
+}
+
+/* unit */
+.robot h3{
+    margin-top:12px;
+    color:#1e40af;
+    font-weight:700;
+    font-size:35px;   /* ← CHỮ UNIT TO HƠN */
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>🤖 Luyện tập cùng Quizizz</h1>
+    <p>Ứng dụng AI hỗ trợ học sinh lớp 8 làm bài tập</p>
+</header>
+
+<div class="grid" id="grid"></div>
+
+<script>
+const robotImg =
+"https://raw.githubusercontent.com/kayypro4-dev/n-n-3/main/ChatGPT%20Image%20Jan%207%2C%202026%2C%2010_56_27%20PM.png";
+
+const units = [
+  ["Unit 1", "https://wayground.com/join?gc=47088358"],
+  ["Unit 2", "https://wayground.com/join?gc=31212262"],
+  ["Unit 3", "https://wayground.com/join?gc=44024550"],
+  ["Unit 4", "https://wayground.com/join?gc=60203750"],
+  ["Unit 5", "https://wayground.com/join?gc=07889638"],
+  ["Unit 6", "https://wayground.com/join?gc=37846246"],
+  ["Unit 7", "https://wayground.com/join?gc=57893606"],
+  ["Unit 8", "https://wayground.com/join?gc=53600998"],
+  ["Unit 9", "https://wayground.com/join?gc=26731238"],
+  ["Unit 10", "https://wayground.com/join?gc=31527654"],
+  ["Unit 11", "https://wayground.com/join?gc=42767078"],
+  ["Unit 12", "https://wayground.com/join?gc=06787814"]
+];
+
+
+const grid=document.getElementById("grid");
+
+units.forEach((u,i)=>{
+    const r=document.createElement("div");
+    r.className="robot";
+
+    r.innerHTML=`
+        <img src="${robotImg}">
+        <div class="belly">
+            <div class="qr" id="qr${i}"></div>
+            <a href="${u[1]}" target="_blank">▶ Xem bài tập</a>
+        </div>
+        <h3>${u[0]}</h3>
+    `;
+
+    grid.appendChild(r);
+
+    new QRCode(document.getElementById("qr"+i),{
+        text:u[1],
+        width:90,
+        height:90
+    });
+});
+</script>
+
+</body>
+</html>
+
